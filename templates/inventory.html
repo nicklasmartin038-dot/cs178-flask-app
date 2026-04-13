@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory</title>
+</head>
+<body>
+    <h1>Project One Store Inventory</h1>
+
+    <table border="1">
+        <tr>
+            <th>ItemID</th>
+            <th>ItemName</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>CategoryID</th>
+        </tr>
+
+        {% for item in items %}
+        <tr>
+            <td>{{ item.ItemID }}</td>
+            <td>{{ item.ItemName }}</td>
+            <td>{{ item.Price }}</td>
+            <td>{{ item.Quantity }}</td>
+            <td>{{ item.CategoryID }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
