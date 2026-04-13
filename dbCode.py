@@ -1,24 +1,24 @@
 # dbCode.py
-# Author: Your Name
+# Author: Nick Martin
 # Helper functions for database connection and queries
 
+from creds import host, user, password, db
 import pymysql
-import creds
 
 def get_conn():
-    """Returns a connection to the MySQL RDS instance."""
-    conn = pymysql.connect(
-        host=creds.host,
-        user=creds.user,
-        password=creds.password,
-        db=creds.db,
+    return pymysql.connect(
+        host=host,
+        user=user,
+        password=password,
+        database=db,
+        cursorclass=pymysql.cursors.DictCursor
     )
-    return conn
 
-def execute_query(query, args=()):
-    """Executes a SELECT query and returns all rows as dictionaries."""
-    cur = get_conn().cursor(pymysql.cursors.DictCursor)
-    cur.execute(query, args)
-    rows = cur.fetchall()
+def get_inventory():
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM Inventory")
+    results = cur.fetchall()
     cur.close()
-    return rows
+    conn.close()
+    return results
