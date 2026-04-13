@@ -57,7 +57,7 @@ def display_users():
     # hard code a value to the users_list;
     # note that this could have been a result from an SQL query :) 
     users_list = get_all_users()
-    return render_template('display_users.html', users = users_list)
+    return str(users_list)
 
 @app.route('/inventory')
 def inventory():
