@@ -1,4 +1,4 @@
-# [Your Project Name Here]
+# Nicklas Martin
 
 **CS178: Cloud and Database Systems — Project #1**
 **Author:** Nick Martin
@@ -7,8 +7,7 @@
 ---
 
 ## Overview
-
-<!-- Describe your project in 2-4 sentences. What does it do? Who is it for? What problem does it solve? -->
+I like to watch movies with my frends and I often have movie nights with them, but i have alot of frends so It can get hard remembering what types of genres of movies all my frends like. So for this project, I made a database ware I can store my frends first_name, last_name, and genre. I have added delete_user, for when I stop being frends with somone, Update_user, for when I need to changes a frends name or genre. add_user, for when I make a new frend to add to the database. Display_all_users, so I cann see a table of all my frends and there favorate movie genre, and a serch my genre, for when I am in the mood for a specific movie and need to see who I should call
 
 ---
 
@@ -16,9 +15,10 @@
 
 - **Flask** — Python web framework
 - **AWS EC2** — hosts the running Flask application
-- **AWS RDS (MySQL)** — relational database for [describe what you stored]
-- **AWS DynamoDB** — non-relational database for [describe what you stored]
+- **AWS RDS (MySQL)** — relational database for storing user information (like name and genre preferances)
+- **AWS DynamoDB** — non-relational database for for storesing more flexable and more unstructured data.
 - **GitHub Actions** — auto-deploys code from GitHub to EC2 on push
+- 
 
 ---
 
