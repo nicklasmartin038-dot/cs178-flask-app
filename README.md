@@ -10,109 +10,27 @@
 I like to watch movies with my frends and I often have movie nights with them, but i have alot of frends so It can get hard remembering what types of genres of movies all my frends like. So for this project, I made a database ware I can store my frends first_name, last_name, and genre. I have added delete_user, for when I stop being frends with somone, Update_user, for when I need to changes a frends name or genre. add_user, for when I make a new frend to add to the database. Display_all_users, so I cann see a table of all my frends and there favorate movie genre, and a serch my genre, for when I am in the mood for a specific movie and need to see who I should call
 
 ---
-
 ## Technologies Used
-
 - **Flask** — Python web framework
 - **AWS EC2** — hosts the running Flask application
 - **AWS RDS (MySQL)** — relational database for storing user information (like name and genre preferances)
 - **AWS DynamoDB** — non-relational database for for storesing more flexable and more unstructured data.
 - **GitHub Actions** — auto-deploys code from GitHub to EC2 on push
-- 
+- **Chatgpt** -Used mostely to help me when I got stuck on errors and when writing code
 
----
 
-## Project Structure
-
-```
-ProjectOne/
-├── flaskapp.py          # Main Flask application — routes and app logic
-├── dbCode.py            # Database helper functions (MySQL connection + queries)
-├── creds_sample.py      # Sample credentials file (see Credential Setup below)
-├── templates/
-│   ├── home.html        # Landing page
-│   ├── [other].html     # Add descriptions for your other templates
-├── .gitignore           # Excludes creds.py and other sensitive files
-└── README.md
-```
-
----
-
-## How to Run Locally
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   pip3 install flask pymysql boto3
-   ```
-
-3. Set up your credentials (see Credential Setup below)
-
-4. Run the app:
-
-   ```bash
-   python3 flaskapp.py
-   ```
-
-5. Open your browser and go to `http://127.0.0.1:8080`
-
----
-
-## How to Access in the Cloud
-
-The app is deployed on an AWS EC2 instance. To view the live version:
-
-```
-http://[your-ec2-public-ip]:8080
-```
-
-_(Note: the EC2 instance may not be running after project submission.)_
-
----
-
-## Credential Setup
-
-This project requires a `creds.py` file that is **not included in this repository** for security reasons.
-
-Create a file called `creds.py` in the project root with the following format (see `creds_sample.py` for reference):
-
-```python
-# creds.py — do not commit this file
-host = "your-rds-endpoint"
-user = "admin"
-password = "your-password"
-db = "your-database-name"
-```
-
----
-
-## Database Design
+## Website instructions
+When you open up my website you will see a homepage with 5 buttons. (delete user, add user, update user, show all users, and serche genre) The delete user button allowes you to remove a user from the list. The add user button allowes you to ass a user. The update user button allowes you to change the atrebutes of a allready created user. the serch genre button allowes you to serch the users favorate movie genre (so we know who to invite to movie night!" and the display all users button shows you a table of all the users in your database. If you want to go back to whare you were you can simply puch the back arrow in your serch engine and it will take you back to your orevius page!
 
 ### SQL (MySQL on RDS)
 
-<!-- Briefly describe your relational database schema. What tables do you have? What are the key relationships? -->
-
-**Example:**
-
-- `[TableName]` — stores [description]; primary key is `[key]`
-- `[TableName]` — stores [description]; foreign key links to `[other table]`
-
-The JOIN query used in this project: <!-- describe it in plain English -->
+The JOIN query used in this project: I did not use JOIN in my project for the sake of time
 
 ### DynamoDB
 
-<!-- Describe your DynamoDB table. What is the partition key? What attributes does each item have? How does it connect to the rest of the app? -->
-
-- **Table name:** `[your-table-name]`
-- **Partition key:** `[key-name]`
-- **Used for:** [description]
+- **Table name:** `User Log`
+- **Partition key:** `activity_id`
+- **Used for:** monotering the changes/activity on my website/database
 
 ---
 
@@ -120,19 +38,18 @@ The JOIN query used in this project: <!-- describe it in plain English -->
 
 | Operation | Route      | Description    |
 | --------- | ---------- | -------------- |
-| Create    | `/[route]` | [what it does] |
-| Read      | `/[route]` | [what it does] |
-| Update    | `/[route]` | [what it does] |
-| Delete    | `/[route]` | [what it does] |
+| Add User    | `/add-user` | Adds a new user to the database with first name, last name, and favorite genre |
+| Display All users| `/display-users` |  Retrieves and displays all users from the database |
+| Update User  | `/update-user` | Updates an existing user’s information in the database |
+| Delete user   | `/delete-user` | Removes a user from the database based on their name |
 
 ---
 
 ## Challenges and Insights
-
-<!-- What was the hardest part? What did you learn? Any interesting design decisions? -->
+One challenge was getting AWS services like EC2, RDS, and DynamoDB to work together and troubleshooting connection issues. From this project, I learned how to build and deploy a Flask app, connect it to databases, and manage cloud resources securely.
 
 ---
 
 ## AI Assistance
 
-<!-- List any AI tools you used (e.g., ChatGPT) and briefly describe what you used them for. Per course policy, AI use is allowed but must be cited in code comments and noted here. -->
+I only used chatgpt, I mostly used it to help me get back on track when I had errors/problems, I also used it to help me write and fix some of my code. expesialy the HTML code as I am the least confident in HTML.
