@@ -2,8 +2,8 @@
 # description: Flask example using redirect, url_for, and flash
 # credit: the template html files were constructed with the help of ChatGPT
 
-from dbCode import get_inventory
-from dbCode import get_inventory, add_user, get_all_users, delete_user
+
+from dbCode import get_inventory, add_user as add_user_db, get_all_users, delete_user as delete_user_db
 from flask import Flask, render_template, request, redirect, url_for, flash
 from dbCode import get_inventory
 
@@ -25,7 +25,7 @@ def add_user():
         
         # Process the data (e.g., add it to a database)
         # For now, let's just print it to the console
-        add_user_to_db(first_name, last_name, genre)
+        add_user_db(first_name, last_name, genre)
         
         flash('User added successfully! Huzzah!', 'success')  # 'success' is a category; makes a green banner at the top
         # Redirect to home page or another page upon successful submission
@@ -43,7 +43,7 @@ def delete_user():
         
         # Process the data (e.g., add it to a database)
         # For now, let's just print it to the console
-       delete_user_from_db(first_name, last_name)
+        delete_user_db(first_name, last_name)
         
         flash('User deleted successfully! Hoorah!', 'warning') 
         # Redirect to home page or another page upon successful submission
