@@ -1,19 +1,28 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Delete User</title>
+    <title>Update User</title>
 </head>
 <body>
-    <h1>Delete User</h1>
+    <h1>Update User</h1>
 
-    <form action="{{ url_for('delete_user') }}" method="post">
-        <label for="first_name">First Name:</label><br />
-        <input type="text" id="first_name" name="first_name" required /><br />
+    <form action="{{ url_for('update_user') }}" method="post">
+        <label>Current First Name:</label><br>
+        <input type="text" name="old_first_name" required><br>
 
-        <label for="last_name">Last Name:</label><br />
-        <input type="text" id="last_name" name="last_name" required /><br /><br />
+        <label>Current Last Name:</label><br>
+        <input type="text" name="old_last_name" required><br><br>
 
-        <input type="submit" value="Delete User" />
+        <label>New First Name:</label><br>
+        <input type="text" name="new_first_name" required><br>
+
+        <label>New Last Name:</label><br>
+        <input type="text" name="new_last_name" required><br>
+
+        <label>New Favorite Genre:</label><br>
+        <input type="text" name="new_genre" required><br><br>
+
+        <input type="submit" value="Update User">
     </form>
 </body>
 </html>
