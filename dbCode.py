@@ -22,3 +22,39 @@ def get_inventory():
     cur.close()
     conn.close()
     return results
+
+def add_user(first_name, last_name, genre):
+    conn = get_conn()
+    cur = conn.cursor()
+
+    query = "INSERT INTO Users (first_name, last_name, favorite_genre) VALUES (%s, %s, %s)"
+    cur.execute(query, (first_name, last_name, genre))
+
+    conn.commit()
+    cur.close()
+    conn.close()
+
+
+def get_all_users():
+    conn = get_conn()
+    cur = conn.cursor()
+
+    query = "SELECT first_name, last_name, favorite_genre FROM Users"
+    cur.execute(query)
+    results = cur.fetchall()
+
+    cur.close()
+    conn.close()
+    return results
+
+
+def delete_user(first_name, last_name):
+    conn = get_conn()
+    cur = conn.cursor()
+
+    query = "DELETE FROM Users WHERE first_name=%s AND last_name=%s"
+    cur.execute(query, (first_name, last_name))
+
+    conn.commit()
+    cur.close()
+    conn.close()
