@@ -5,7 +5,6 @@
 
 from dbCode import get_inventory, add_user as add_user_db, get_all_users, delete_user as delete_user_db
 from flask import Flask, render_template, request, redirect, url_for, flash
-from dbCode import get_inventory
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key' # this is an artifact for using flash displays; 
