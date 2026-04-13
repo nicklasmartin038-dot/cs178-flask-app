@@ -74,17 +74,14 @@ def update_user(old_first_name, old_last_name, new_first_name, new_last_name, ne
     cur.close()
     conn.close()
 
-def update_user(old_first_name, old_last_name, new_first_name, new_last_name, new_genre):
+def search_users_by_genre(genre):
     conn = get_conn()
     cur = conn.cursor()
 
-    query = """
-    UPDATE Users
-    SET first_name = %s, last_name = %s, favorite_genre = %s
-    WHERE first_name = %s AND last_name = %s
-    """
-    cur.execute(query, (new_first_name, new_last_name, new_genre, old_first_name, old_last_name))
+    query = "SELECT first_name, last_name, favorite_genre FROM Users WHERE favorite_genre = %s"
+    cur.execute(query, (genre,))
+    results = cur.fetchall()
 
-    conn.commit()
     cur.close()
     conn.close()
+    return results
