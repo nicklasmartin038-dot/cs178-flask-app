@@ -58,3 +58,33 @@ def delete_user(first_name, last_name):
     conn.commit()
     cur.close()
     conn.close()
+
+def update_user(old_first_name, old_last_name, new_first_name, new_last_name, new_genre):
+    conn = get_conn()
+    cur = conn.cursor()
+
+    query = """
+    UPDATE Users
+    SET first_name = %s, last_name = %s, favorite_genre = %s
+    WHERE first_name = %s AND last_name = %s
+    """
+    cur.execute(query, (new_first_name, new_last_name, new_genre, old_first_name, old_last_name))
+
+    conn.commit()
+    cur.close()
+    conn.close()
+
+def update_user(old_first_name, old_last_name, new_first_name, new_last_name, new_genre):
+    conn = get_conn()
+    cur = conn.cursor()
+
+    query = """
+    UPDATE Users
+    SET first_name = %s, last_name = %s, favorite_genre = %s
+    WHERE first_name = %s AND last_name = %s
+    """
+    cur.execute(query, (new_first_name, new_last_name, new_genre, old_first_name, old_last_name))
+
+    conn.commit()
+    cur.close()
+    conn.close()
