@@ -3,7 +3,14 @@
 # credit: the template html files were constructed with the help of ChatGPT
 
 
-from dbCode import get_inventory, add_user as add_user_db, get_all_users, delete_user as delete_user_db
+from dbCode import (
+    get_inventory,
+    add_user as add_user_db,
+    get_all_users,
+    delete_user as delete_user_db,
+    update_user as update_user_db,
+    search_users_by_genre
+)
 from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
@@ -64,6 +71,30 @@ def inventory():
     items = get_inventory()
     return render_template('inventory.html', items=items)
 
+@app.route('/update-user', methods=['GET', 'POST'])
+def update_user():
+    if request.method == 'POST':
+        old_first_name = request.form['old_first_name']
+        old_last_name = request.form['old_last_name']
+        new_first_name = request.form['new_first_name']
+        new_last_name = request.form['new_last_name']
+        new_genre = request.form['new_genre']
+
+        update_user_db(old_first_name, old_last_name, new_first_name, new_last_name, new_genre)
+
+        flash('User updated successfully!', 'info')
+        return redirect(url_for('home'))
+    else:
+        return render_template('update_user.html')
+
+@app.route('/search-genre', methods=['GET', 'POST'])
+def search_genre():
+    if request.method == 'POST':
+        genre = request.form['genre']
+        users_list = search_users_by_genre(genre)
+        return render_template('display_users.html', users=users_list)
+    else:
+        return render_template('search_genre.html')
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
