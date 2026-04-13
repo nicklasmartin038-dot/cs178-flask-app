@@ -30,8 +30,9 @@ def add_user():
         genre = request.form['genre']
         
         # Process the data (e.g., add it to a database)
-        log_activity("add_user", user_name=name, genre=genre)
+       
         add_user_db(first_name, last_name, genre)
+        log_activity("add_user", user_name=f"{first_name} {last_name}", genre=genre)
         
         flash('User added successfully! Huzzah!', 'success')  # 'success' is a category; makes a green banner at the top
         # Redirect to home page or another page upon successful submission
@@ -48,9 +49,10 @@ def delete_user():
         last_name =request.form['last_name']
         
         # Process the data (e.g., add it to a database)
-        # For now, let's just print it to the console
-        delete_user_db(first_name, last_name)
         
+        delete_user_db(first_name, last_name)
+        log_activity("delete_user", user_name=f"{first_name} {last_name}")
+
         flash('User deleted successfully! Hoorah!', 'warning') 
         # Redirect to home page or another page upon successful submission
         return redirect(url_for('home'))
@@ -81,6 +83,7 @@ def update_user():
         new_genre = request.form['new_genre']
 
         update_user_db(old_first_name, old_last_name, new_first_name, new_last_name, new_genre)
+        log_activity("update_user", user_name=f"{new_first_name} {new_last_name}", genre=new_genre)
 
         flash('User updated successfully!', 'info')
         return redirect(url_for('home'))
@@ -92,6 +95,7 @@ def search_genre():
     if request.method == 'POST':
         genre = request.form['genre']
         users_list = search_users_by_genre(genre)
+        log_activity("search_genre", genre=genre)
         return render_template('display_users.html', users=users_list)
     else:
         return render_template('search_genre.html')
