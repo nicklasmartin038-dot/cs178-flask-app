@@ -2,7 +2,7 @@
 # description: Flask example using redirect, url_for, and flash
 # credit: the template html files were constructed with the help of ChatGPT
 
-
+from dynamoCode import log_activity
 from dbCode import (
     get_inventory,
     add_user as add_user_db,
@@ -30,7 +30,7 @@ def add_user():
         genre = request.form['genre']
         
         # Process the data (e.g., add it to a database)
-        # For now, let's just print it to the console
+        log_activity("add_user", user_name=name, genre=genre)
         add_user_db(first_name, last_name, genre)
         
         flash('User added successfully! Huzzah!', 'success')  # 'success' is a category; makes a green banner at the top
