@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Update User</title>
+</head>
+<body>
+    <h1>Update User</h1>
+
+    <form action="{{ url_for('update_user') }}" method="post">
+        <label>Current First Name:</label><br>
+        <input type="text" name="old_first_name" required><br>
+
+        <label>Current Last Name:</label><br>
+        <input type="text" name="old_last_name" required><br><br>
+
+        <label>New First Name:</label><br>
+        <input type="text" name="new_first_name" required><br>
+
+        <label>New Last Name:</label><br>
+        <input type="text" name="new_last_name" required><br>
+
+        <label>New Favorite Genre:</label><br>
+        <input type="text" name="new_genre" required><br><br>
+
+        <input type="submit" value="Update User">
+    </form>
+</body>
+</html>
