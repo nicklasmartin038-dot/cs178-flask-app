@@ -3,7 +3,7 @@
 **CS178: Cloud and Database Systems — Project #1**
 **Author:** Nick Martin
 **GitHub:** nicklasmartin038-dot
-
+**proposed score** 95/100
 ---
 
 ## Overview
@@ -51,5 +51,4 @@ One challenge was getting AWS services like EC2, RDS, and DynamoDB to work toget
 ---
 
 ## AI Assistance
-
 I only used chatgpt, I mostly used it to help me get back on track when I had errors/problems, I also used it to help me write and fix some of my code. expesialy the HTML code as I am the least confident in HTML.
